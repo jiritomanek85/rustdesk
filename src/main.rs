@@ -1,4 +1,4 @@
-![cfg_attr(
+#![cfg_attr(
     all(not(debug_assertions), target_os = "windows"),
     windows_subsystem = "windows"
 )]
@@ -22,15 +22,7 @@ fn main() {
     feature = "flutter"
 )))]
 fn main() {
-
-    //BEGIN CHANGES
-    //Embed the Sciter.dll file into the exe, and then write it to disk when application starts
-    println!("================ LOADING SCITER DLLL ==================");
-    let bytes = std::include_bytes!("..\\sciter.dll"); //since main.rs is in rustdesk/src, we need to go up one level (to rustdesk)
-    std::fs::write("sciter.dll", bytes.as_slice());
-    //END CHANGES
-    
-    
+ 
     if !common::global_init() {
         return;
     }
